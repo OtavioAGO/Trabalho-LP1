@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
-1717261270 source:c:\users\otavi\onedrive\documentos\lp1\trabalholp1\main.c
+1717360701 source:c:\users\otavi\onedrive\documentos\lp1\trabalholp1\main.c
 	<stdio.h>
 	<stdlib.h>
-	<conio.h>
 	<windows.h>
+	<conio.h>
+	<locale.h>
+	<stdbool.h>
+	<string.h>
 
