@@ -15,7 +15,7 @@
     int x,y;
  }pos;
  struct jogador{
-    char *nome[20];
+    char nome[20];
     int pontos;
  };
 pos passaro;
@@ -99,7 +99,7 @@ bool bateu(){
         return false;
     }
     for(int i = 0; i < qtdCanos; i++){
-        if ((passaro.x < canos[i].x+2 && passaro.x > canos[i].x-2) && (passaro.y < canos[i].y-2 || passaro.y >  canos[i].y+2 )){
+        if (((passaro.x < canos[i].x+2 && passaro.x > canos[i].x-2) || (passaro.x+1 < canos[i].x+2 && passaro.x+1 > canos[i].x-2) ) && (passaro.y < canos[i].y-2 || passaro.y >  canos[i].y+2 || passaro.y-1 < canos[i].y-2 || passaro.y-1 >  canos[i].y+2  )){
             return false;
         }
     }
@@ -224,6 +224,7 @@ int main()
     srand(time(NULL));
     SetConsoleTitle("PASSARO DEFORMADO QUE PULA");
     int opc;
+    FILE *ptr;
     char lista[3][40] = { "Jogar", "Rank", "Sair" };
 
     setlocale(LC_ALL, "");
@@ -231,7 +232,7 @@ int main()
         opc = menu(10, 10, 3, lista);
         if (opc == 1){
             system("@cls||clear");
-            system("color 0");
+            system("color 0F");
             passaro.x = 5;
             passaro.y = 10;
             for (int i =0 ; i < qtdCanos; i++){
@@ -279,12 +280,34 @@ int main()
             }
             system("@cls||clear");
             printf("Jogador: ");
-            scanf("%s",j1.nome);
-            FILE *ptr;
-            ptr = fopen("placar.txt", "w");
-            fprintf(ptr,"%s - %d pontos\n", j1.nome,j1.pontos);
-            fclose(ptr);
-            free(j1.nome);
+            scanf("%s", j1.nome);
+            ptr = fopen("placar.txt", "a");
+            if (ptr != NULL) {
+                fprintf(ptr, "%s - %d pontos\n", j1.nome, j1.pontos);
+                fclose(ptr);
+            } else {
+                printf("Erro ao abrir o arquivo de placar.\n");
+            }
+            continue;
+        }
+        else if (opc == 2) {
+            system("@cls||clear");
+            system("color 0F");
+            FILE *ptr2;
+            ptr2 = fopen("placar.txt", "r");
+            if (ptr2 != NULL){
+                char c;
+                while ((c = fgetc(ptr2)) != EOF){
+                    putchar(c);
+                }
+                Sleep(1);
+                clearerr(ptr2);
+                fclose(ptr2);
+            }
+            printf("Pressione qualquer tecla para voltar ao menu");
+            getch();
+            system("@cls||clear");
+            continue;
         }
         else if (opc == 3) {
             break;
