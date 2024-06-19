@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1717553009 source:c:\users\otavi\onedrive\documentos\lp1\trabalholp1\main.c
+1718840712 source:c:\users\otavi\onedrive\documentos\lp1\trabalholp1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -7,4 +7,5 @@
 	<locale.h>
 	<stdbool.h>
 	<string.h>
+	<time.h>
 
