@@ -289,7 +289,7 @@ int main(){
     int qtdLinhas;
     Jogador* placar = lerPlacar("placar.txt", &qtdLinhas);
     srand(time(NULL));
-    SetConsoleTitle("PASSARO DEFORMADO QUE PULA");
+    SetConsoleTitle("Certamente não é o Flappy Bird");
     int opc;
     FILE *ptr;
     char lista[4][40] = { "Flappy Bird","Jogar", "Rank", "Sair" };
